@@ -1,0 +1,49 @@
+<!--
+1.构建项目为了实验依赖传递
+	helloMaven <- helloMaven2 <- makeFriend
+
+2.传递依赖概念
+		A<-B B依赖于A(第一直接依赖)
+		B<-C C依赖与B(第二直接依赖)
+		A<-C C传递依赖A(间接依赖,依赖范围收到第一直接依赖和第二直接依赖的影响)
+
+		列是第一直接依赖,行是第二直接依赖
+					compile		test	provided	runtime
+		compile		compile		- 		- 			runtime
+		test		test		- 		- 			test
+		provided	provided	- 		provided	provided
+		runtime		runtime		- 		- 			runtime
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.happtim.maven</groupId>
+  <artifactId>makeFriend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <dependencies>
+	<!--
+	如果没有添加junit依赖,会从上级依赖继承过来junit.jar
+	根据上标传递依赖,亦可以实习某些情况下的依赖
+	如 compile 为hellomaven2 依赖于helloMaven
+		test为 makeFriend 依赖于helloMaven2 就造成不会依赖传递
+	-->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+      <!--阻止依赖传递-->
+	  <optional>false</optional>
+    </dependency>
+    
+    <dependency>
+		<groupId>com.happtim.maven</groupId>
+		<artifactId>helloFriend</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+  </dependencies>
+</project>

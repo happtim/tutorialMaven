@@ -46,7 +46,7 @@
 		</dependency>		
 		
 		<!--依赖与第一个项目helloMaven-->
-		<!--依赖管理还可以对自己的项目做依赖,不需要把依赖工程安装到仓库-->
+		<!--依赖管理还可以对自己的项目做依赖-->
 		<dependency>
 			<groupId>com.happtim.maven</groupId>
 			<artifactId>hello</artifactId>
