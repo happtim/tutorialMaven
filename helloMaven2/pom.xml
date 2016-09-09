@@ -55,4 +55,29 @@
 		</dependency>
 	</dependencies>
 	
+	<!--
+	maven的核心仅仅定义了抽象的生命周期,具体的任务都是交给插件完成.
+	每个插件都能实现多个功能,每个功能就是一个插件目标
+	-->
+	<build>
+		<plugins>
+			<plugin>
+				<!-- 要使用的插件坐标 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.0.1</version>
+				<!-- 要执行的目标或者命令 -->
+				<executions>
+					<execution>
+						<!-- 生命周期的一个阶段 -->
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
 </project>
