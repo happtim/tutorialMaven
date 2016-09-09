@@ -42,6 +42,7 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.9</version>
+			<!-- 只对test的classpath需要则个包 -->
 			<scope>test</scope>
 		</dependency>		
 		
@@ -51,9 +52,18 @@
 			<groupId>com.happtim.maven</groupId>
 			<artifactId>hello</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<!-- 项目三套classpath需要这个包 -->
+			<!-- provided 只对test和java主目录的classpath有效
+				runtime 只对运行时的classpath有效 -->
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+
+	<!-- 依赖包继承过来,版本号集中管理,子工程不再关心版本 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
 	
 	<!--
 	maven的核心仅仅定义了抽象的生命周期,具体的任务都是交给插件完成.
