@@ -1,0 +1,42 @@
+<!--
+1.继承
+	继承为了消除重复,我们把很多相同配置提取出来groupId,version等
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.happtim.maven</groupId>
+  <artifactId>parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <!-- 父工程为管理制,使用pom -->
+  <packaging>pom</packaging>
+  
+  <!-- 属性定义,使用${mysql.version}.作为版本管理 -->
+  <properties>
+  	<mysql.version>5.1.38</mysql.version>
+  	<mybatis.version>3.2.8</mybatis.version>
+  </properties>
+  
+<!-- 父工程中的dependencies的依赖会继承下去 -->
+  <dependencies>
+  	<dependency>
+   	 <groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql.version}</version>
+	</dependency>
+  </dependencies>
+  
+  <!-- 父工程只做定义,子工程需要在声明 -->
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+
+</project>
