@@ -1,0 +1,44 @@
+<!--
+1.新建第二个项目模块HelloFriend目录及约定的目录结构
+	helloMaven2
+	 	src
+	 		main
+	 			java
+	 			resources
+	 		test
+	 			java
+	 			resources
+	 	pom.xml
+
+2.在项目HelloFriend根目录建立pom.xml
+3.在src/main/java/com/happtim/maven目录下新建文件HelloFriend.java
+4.在src/test/java/com/happtim/maven目录下新建测试文件HelloFriendTest.java
+5.在helloMaven2目录下执行命令mvn package
+6.需要重新构建Hello第一个项目并安装到数据仓库，在命令行Hello根目录下执行mvn clean install
+7.重新在HelloFriend目录下执行命令mvn package
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.happtim.maven</groupId>
+  <artifactId>helloFriend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.9</version>
+			<scope>test</scope>
+		</dependency>		
+		
+		<!--依赖与第一个项目helloMaven-->
+		<dependency>
+			<groupId>com.happtim.maven</groupId>
+			<artifactId>hello</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	
+</project>
