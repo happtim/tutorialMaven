@@ -1,6 +1,12 @@
 <!--
 1.继承
 	继承为了消除重复,我们把很多相同配置提取出来groupId,version等
+2.聚合
+	如果我们想一次构建多个项目模块,那我们就需要对多个项目模块进行聚合
+
+两者之间关系
+	聚合主要为了快速构建项目.
+	继承主要为了消灭重复.
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -18,6 +24,12 @@
   	<mysql.version>5.1.38</mysql.version>
   	<mybatis.version>3.2.8</mybatis.version>
   </properties>
+
+	<modules>
+			<module>../helloMaven</module>
+			<module>../helloMaven2</module>
+			<module>../makeFriend</module>
+  	</modules>
   
 <!-- 父工程中的dependencies的依赖会继承下去 -->
   <dependencies>
