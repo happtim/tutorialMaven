@@ -24,6 +24,19 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
+	<!--依赖管理-->
+	<!--
+		依赖范围       主代码 测试代码 运行代码 例子
+		compile(默认)	Y		Y		Y		log4j
+		test			- 		Y		- 		junit
+		provided		Y		Y		- 		servlet-api
+		runtime			- 		- 		Y		JDBC Driver implementation
+	compile: 默认编译依赖范围。对于编译，测试，运行三种 classpath 都有效 
+	test: 测试依赖范围。只对于测试 classpath 有效 
+	provided ：已提供依赖范围。对于编译，测试的 classpath 都有效，但对于运行无效。因此由容器已经提供，例如 servlet_api 
+	runtime: 运行时提供。例如： jdbc 驱动 编译期间不引用jar包不会报错
+
+	-->
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -33,6 +46,7 @@
 		</dependency>		
 		
 		<!--依赖与第一个项目helloMaven-->
+		<!--依赖管理还可以对自己的项目做依赖,不需要把依赖工程安装到仓库-->
 		<dependency>
 			<groupId>com.happtim.maven</groupId>
 			<artifactId>hello</artifactId>
